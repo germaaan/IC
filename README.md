@@ -6,9 +6,9 @@
 
 Repositorio con los trabajos desarrolladas por **Germán Martínez Maldonado** para la asignatura **Inteligencia Computacional**, curso *2015-2016*, perteneciente al **Máster Universitario en Ingeniería Informática**.
 
-Código liberado bajo licencia GNU GENERAL PUBLIC LICENSE Version 3.
+_Código_ liberado bajo licencia **GNU GENERAL PUBLIC LICENSE Version 3**.
 
-Texto liberado bajo la licencia Creative Commons Attribution-ShareAlike 4.0 International.
+_Texto_ liberado bajo la licencia **Creative Commons Attribution-ShareAlike 4.0 International**.
 
 <p align="center">
 <a href="http://www.gnu.org/licenses/gpl-3.0.html">
