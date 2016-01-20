@@ -109,6 +109,61 @@ El cálculo del promedio ponderado difuso para relacionar la entrada con la sali
 3. Se transforma el conjunto difuso resultante en una de las expresiones lingüísticas definidas: No aprobo1, No aprobo2, Habilita, Aprobo1 y Aprobo2. Para realizar esta transformación se realiza la siguiente secuencia:
   31. Se transforman mediante el método del centro de gravedad las variables lingüísticas en valores escalares del conjunto difuso resultante y las funciones de pertenencia de salida.
   32. Se determina la distancia entre el conjunto difuso resultante y las funciones de pertenencia de la salida.
-  33. Se asigna la variable lingüística de salda a la regla creada usando la distancia mínima entre el conjunto difuso resultante y las funciones de permanencia de la salida.
+  33. Se asigna la variable lingüística de salida a la regla creada usando la distancia mínima entre el conjunto difuso resultante y las funciones de permanencia de la salida.
+
+![algoritmoGeneracionReglasDifusas](images/algoritmoGeneracionReglasDifusas.png)
 
 En el sistema difuso propuesto se utilizó un motor de inferencia tipo Mamdani descrito en la sección anterior.
+
+#### 4. Resultados
+
+Para comprobar el resultado de sistema se van a proponer situaciones realistas en las que el grado de incertidumbre para decidir si el alumno aprueba o no es alto. (Nota: "Habilita" se refiere a que el alumno no aprueba directamente, pero tiene la opción de hacer  examen aprobatorio si se producen ciertas condiciones.)
+
+| Escalera 	| NP 	| NT 	| M 	| Nota Final 	| Salida 	|
+|:--------:	|:---:	|:---:	|:-----:	|:----------:	|:--------:	|
+| 1 	| 2,8 	| 3,1 	| Baja 	| 2,89 	| Habilita 	|
+| 1 	| 2,8 	| 3,1 	| Media 	| 2,96 	| Aprobo1 	|
+| 1 	| 2,8 	| 3,1 	| Alta 	| 3,01 	| Aprobo1 	|
+| 2 	| 3,1 	| 2,5 	| Baja 	| 2,91 	| Habilita 	|
+| 2 	| 3,1 	| 2,5 	| Media 	| 2,99 	| Aprobo1 	|
+| 2 	| 3,1 	| 2,5 	| Alta 	| 3,05 	| Aprobo1 	|
+| 3 	| 3 	| 2 	| Baja 	| 2,65 	| Habilita 	|
+| 3 	| 3 	| 2 	| Media 	| 2,74 	| Habilita 	|
+| 3 	| 3 	| 2 	| Alta 	| 2,86 	| Habilita 	|
+| 4 	| 3 	| 3,2 	| Baja 	| 3,02 	| Aprobo1 	|
+| 4 	| 3 	| 3,2 	| Media 	| 3,1 	| Aprobo1 	|
+| 4 	| 3 	| 3,2 	| Alta 	| 3,24 	| Aprobo1 	|
+
+A la vista de los resultados podemos ver lo siguiente:
+
+- En los escenarios 1 y 2, los estudiantes que estaban cerca del umbral de aprobar el curso y tenian una mayor motivación fueron los que finalmente terminaron aprobando.
+
+- En el escenario 3, la motivación no llega a ser determinante para aprobar porque las notas son muy bajas.
+
+- En el escenario 4, la situación es totalmente opuesta a la interior, las notas son tan altas que la motivación no termina por afectar a la nota final del alumno.
+
+Las pruebas realizadas demuestran que el sistema es confiable para establecer decisiones sobre el alumno aprobará o no el curso cuando los valores de las notas están en el umbral cercano al aprobado, situación en la que la motivación puede entrar a ser considerada para predecir que ante una alta motivación, el alumno finalmente aprobará.
+
+
+#### 5. Conclusiones
+
+El sistema difuso implementado lo que pretendía era imitar el pensamiento del docente cuando tiene que decidir si un alumno que este en el umbral merece aprobar o no. Generalmente dicho docente utilizaría otras variables subjetivas independientes de las notas puestas durante el curso, por eso para desarrollar el sistema se ha tenido en cuenta un aspecto puramente subjetivo como puede ser la motivación del alumno.
+
+Puestos en una situación como la descrita, el sistema demostró su confiabilidad al ser capaz de mediante su sistema de inferencia difuso decidir objetivamente si el alumno aprobaría o no el curso en función de un proceso sistemático de análisis de información.
+
+En vista de los resultados, cabe considerar que cada vez debería ser más importante en la calificación elementos más subjetivos como la participación activa en clase y la predisposición a trabajar las materias.
+
+#### Bibliografía
+
+- Diapositivas de teoría
+
+- [http://www.educacioneningenieria.org/index.php/edi/article/download/83/73](http://www.educacioneningenieria.org/index.php/edi/article/download/83/73)
+
+- [http://es.slideshare.net/mentelibre/relaciones-difusas-graficas-difusas-y-aritmtica-difusa](http://es.slideshare.net/mentelibre/relaciones-difusas-graficas-difusas-y-aritmtica-difusa)
+- [http://palmia.galeon.com/capitulo54.htm](http://palmia.galeon.com/capitulo54.htm)
+- [http://profesores.elo.utfsm.cl/~tarredondo/info/soft-comp/Introduccion%20a%20la%20Logica%20Difusa.pdf](http://profesores.elo.utfsm.cl/~tarredondo/info/soft-comp/Introduccion%20a%20la%20Logica%20Difusa.pdf)
+- [http://webpersonal.uma.es/~MORILLAS/DATOSDIFUSOS.pdf](http://webpersonal.uma.es/~MORILLAS/DATOSDIFUSOS.pdf)
+- [http://www.csee.wvu.edu/classes/cpe521/presentations/DEFUZZ.pdf](http://www.csee.wvu.edu/classes/cpe521/presentations/DEFUZZ.pdf)
+- [http://www.lcc.uma.es/~ppgg/FSS/FSS5.pdf](http://www.lcc.uma.es/~ppgg/FSS/FSS5.pdf)
+- [https://es.wikipedia.org/wiki/Distancia_de_Hamming](https://es.wikipedia.org/wiki/Distancia_de_Hamming)
+- [http://www.monografias.com/trabajos55/metodos-localizacion-instalaciones/metodos-localizacion-instalaciones2.shtml](http://www.monografias.com/trabajos55/metodos-localizacion-instalaciones/metodos-localizacion-instalaciones2.shtml)
