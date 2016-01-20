@@ -197,8 +197,115 @@
             <li>Decodificar salida para obtener valor exacto usando método centro de gravedad</li>
         </section>
       </section>
-    </div>
 
+      <section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p> Tres entradas </p>
+          <ul>
+            <li> Notas de examenes (NP) </li>
+            <li> Notas de tareas (NT) </li>
+            <li> Motivación estudiante (M) </li>
+          </ul>
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <ul>
+            <li>Universo para NP y NT: intervalo [0-5] </li>
+            <li>Variables lingüisticas asociadas a NP y NT: Pésimo, Muy regular, Regular, Bueno y Excelente</li>
+            <li>Para M solo se variables lingüisticas: Baja, Media, Alta</li>
+            <li>Función de pertenencia gaussiana para cada una de las variables lingüisticas.</li>
+          </ul>
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Funciones de pertenencia para notas de exámenes:</p>
+          <img src="images/notasExamenes.png" alt="notasExamenes" height="343">
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Funciones de pertenencia para notas de trabajos:</p>
+          <img src="images/notasTrabajos.png" alt="notasTrabajos" height="343">
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Funciones de pertenencia para la motivación del estudiante:</p>
+          <img src="images/motivacionEstudiantes.png" alt="motivacionEstudiantes" height="343">
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Una única salida (A) que se divide:</p>
+          <ul>
+            <li>Zona de no aprobación (nota
+              < 2)</li>
+                <ul>
+                  <li>No Aprobo1</li>
+                  <li>No Aprobo2</li>
+                </ul>
+                <li> Habilitación (2>= notas
+                  <=3)</li>
+                    <li>Zona de aprobación (nota > 3)</li>
+                    <ul>
+                      <li>Aprobo1</li>
+                      <li>Aprobo2</li>
+                    </ul>
+          </ul>
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Variable de salida del sistema difuso</p>
+          <img src="images/salidaDifusa.png" alt="salidaDifusa" height="343">
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <ul>
+            <li>Generando las reglas de formar combinatoria, obtenemos un gran cantidad (75)</li>
+            <li>Dificultad para determinar causalidad</li>
+            <li>Usando aritmética difusa se generarán automáticamente</li>
+            <li>Relacionar las variables lingüisticas de cada entrada con las variables lingüisticas de salida </li>
+            <li>Se asigna un peso a cada entrada en función de la importancia de esa entrada respecto evaluación final </li>
+          </ul>
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Pesos de los parámetros de entrada para la creación de reglas</p>
+          <img src="images/salidaDifusa.png" alt="salidaDifusa" height="343">
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Combinar información difusa diferentes pesos mediante el promedio ponderado difuso A.</p>
+          <ul>
+            <li>K<sub>i</sub>: función de pertenencia asociada a cada variables lingüística del parámetro de entrada i (NP, NT, M)</li>
+            <li>W: función de pertenecia según la importancia de cada parámetro de entrada i</li>
+          </ul>
+          <img src="images/promedioPonderado.png" alt="promedioPonderado" height="150">
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <p>Procedimiento para calcular el promedio ponderado difuso para relacionar entrada y salida:</p>
+          <ol>
+            <li> Seleccionar todas las combinaciones posibles de variables lingüísticas y entradas </li>
+            <li> Combinar variables entrada junto con funciones de importancia mediante promedio ponderado difuso. Resultado: conjunto difuso de salida [0-5]</li>
+          </ol>
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <ol start="3">
+            <li> Transformar salida en expresione lingüística definida: No aprobo1, No aprobo2, Habilita, Aprobo1 y Aprobo2</li>
+            <ol>
+              <li>Transformar mediante método del centro de gravedad variables lingüísticas en valores escalares del conjunto difuso</li>
+              <li>Determinar la distancia entre conjunto difuso resultante y funciones de pertenencia de la salida</li>
+              <li>Asignar variable lingüística de salida a regla creada con distancia mínima entre conjunto difuso resultante y funciones permanencia salida</li>
+            </ol>
+          </ul>
+        </section>
+        <section>
+          <h2> Descripción del experimento </h2>
+          <img src="images/algoritmoGeneracionReglasDifusas.png" alt="algoritmoGeneracionReglasDifusas" height="550">
+        </section>
+      </section>
+
+    </div>
   </div>
 
   <script src="lib/js/head.min.js"></script>
