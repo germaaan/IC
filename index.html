@@ -55,7 +55,7 @@
         <section>
           <h2>Introducción: lógica difusa en la educación</h2>
           <ul>
-            <li> Generalmente la evaluación de un alumno se realiza unicamente mediante una dimensión: una nota final.</li>
+            <li> Generalmente la evaluación de un alumno se realiza únicamente mediante una dimensión: una nota final.</li>
             <li> Problema: ¿Qué hacer cuando un alumno está cerca del umbral de aprobar? </li>
             <li> Idea: Usar más variables que no sean exclusivamente cuantitativas </li>
           </ul>
@@ -116,14 +116,14 @@
           <p> Por cada conjunto difuso que se cree, se estará construyendo también una función de pertenencia a dicho conjunto en base al criterio oportuno. </p>
         </section>
         <section>
-          <h2> Variables lingüisticas </h2>
+          <h2> Variables lingüísticas </h2>
           <ul>
-            <li> Modelo matemática muy ineficiente para modelar el conociento </li>
-            <li> Representaciones lingüisticas se adaptan mucho mejor </li>
+            <li> Modelo matemática muy ineficiente para modelar el conocimiento </li>
+            <li> Representaciones lingüísticas se adaptan mucho mejor </li>
           </ul>
         </section>
         <section>
-          <h2> Variables lingüisticas </h2>
+          <h2> Variables lingüísticas </h2>
           <p> Ejemplo: rango de notas [0-10]; definir "malo", "normal" y "bueno" para clasificar a los alumnos. </p>
           <ul>
             <li> malo: { 1|1.0, 2|0.8, 3|0.4, 4|0.1, 5|0.0 } </li>
@@ -170,7 +170,7 @@
         <section>
           <h2> Decodificación </h2>
           <ul>
-            <li>Resultado: variables lingüisticas</li>
+            <li>Resultado: variables lingüísticas</li>
             <li>Transformar en resultados escalares cuantificables</li>
             <li>En este experimento se ha usado el método del centro de gravedad y<sub>0</sub>(B)</li>
             <li>y<sub>0</sub>(B): media de los pesos de todo el supp(B) (elementos del conjunto con funciones de pertenencia > 0)
@@ -203,7 +203,7 @@
           <h2> Descripción del experimento </h2>
           <p> Tres entradas </p>
           <ul>
-            <li> Notas de examenes (NP) </li>
+            <li> Notas de exámenes (NP) </li>
             <li> Notas de tareas (NT) </li>
             <li> Motivación estudiante (M) </li>
           </ul>
@@ -212,9 +212,9 @@
           <h2> Descripción del experimento </h2>
           <ul>
             <li>Universo para NP y NT: intervalo [0-5] </li>
-            <li>Variables lingüisticas asociadas a NP y NT: Pésimo, Muy regular, Regular, Bueno y Excelente</li>
-            <li>Para M solo se variables lingüisticas: Baja, Media, Alta</li>
-            <li>Función de pertenencia gaussiana para cada una de las variables lingüisticas.</li>
+            <li>Variables lingüísticas asociadas a NP y NT: Pésimo, Muy regular, Regular, Bueno y Excelente</li>
+            <li>Para M solo se variables lingüísticas: Baja, Media, Alta</li>
+            <li>Función de pertenencia gaussiana para cada una de las variables lingüísticas.</li>
           </ul>
         </section>
         <section>
@@ -262,7 +262,7 @@
             <li>Generando las reglas de formar combinatoria, obtenemos un gran cantidad (75)</li>
             <li>Dificultad para determinar causalidad</li>
             <li>Usando aritmética difusa se generarán automáticamente</li>
-            <li>Relacionar las variables lingüisticas de cada entrada con las variables lingüisticas de salida </li>
+            <li>Relacionar las variables lingüísticas de cada entrada con las variables lingüísticas de salida </li>
             <li>Se asigna un peso a cada entrada en función de la importancia de esa entrada respecto evaluación final </li>
           </ul>
         </section>
@@ -276,7 +276,7 @@
           <p>Combinar información difusa diferentes pesos mediante el promedio ponderado difuso A.</p>
           <ul>
             <li>K<sub>i</sub>: función de pertenencia asociada a cada variables lingüística del parámetro de entrada i (NP, NT, M)</li>
-            <li>W: función de pertenecia según la importancia de cada parámetro de entrada i</li>
+            <li>W: función de pertenencia según la importancia de cada parámetro de entrada i</li>
           </ul>
           <img src="images/promedioPonderado.png" alt="promedioPonderado" height="150">
         </section>
@@ -291,17 +291,155 @@
         <section>
           <h2> Descripción del experimento </h2>
           <ol start="3">
-            <li> Transformar salida en expresione lingüística definida: No aprobo1, No aprobo2, Habilita, Aprobo1 y Aprobo2</li>
+            <li> Transformar salida en expresiones lingüística definida: No aprobo1, No aprobo2, Habilita, Aprobo1 y Aprobo2</li>
             <ol>
               <li>Transformar mediante método del centro de gravedad variables lingüísticas en valores escalares del conjunto difuso</li>
               <li>Determinar la distancia entre conjunto difuso resultante y funciones de pertenencia de la salida</li>
               <li>Asignar variable lingüística de salida a regla creada con distancia mínima entre conjunto difuso resultante y funciones permanencia salida</li>
             </ol>
-          </ul>
+            </ul>
         </section>
         <section>
           <h2> Descripción del experimento </h2>
           <img src="images/algoritmoGeneracionReglasDifusas.png" alt="algoritmoGeneracionReglasDifusas" height="550">
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Resultados</h2>
+          <table style="font-size: 27px;">
+            <tr>
+              <th>Escenario</th>
+              <th>NP</th>
+              <th>NT</th>
+              <th>M</th>
+              <th>Nota Final</th>
+              <th>Salida</th>
+            </tr>
+            <tr>
+              <td rowspan="3">1</td>
+              <td>2,8</td>
+              <td>3,1</td>
+              <td>Baja</td>
+              <td>2,89</td>
+              <td>Habilita</td>
+            </tr>
+            <tr>
+              <td>2,8</td>
+              <td>3,1</td>
+              <td>Media</td>
+              <td>2,96</td>
+              <td>Aprobo1</td>
+            </tr>
+            <tr>
+              <td>2,8</td>
+              <td>3,1</td>
+              <td>Alta</td>
+              <td>3,01</td>
+              <td>Aprobo1</td>
+            </tr>
+            <tr>
+              <td rowspan="3">2</td>
+              <td>3,1</td>
+              <td>2,5</td>
+              <td>Baja</td>
+              <td>2,91</td>
+              <td>Habilita</td>
+            </tr>
+            <tr>
+              <td>3,1</td>
+              <td>2,5</td>
+              <td>Media</td>
+              <td>2,99</td>
+              <td>Aprobo1</td>
+            </tr>
+            <tr>
+              <td>3,1</td>
+              <td>2,5</td>
+              <td>Alta</td>
+              <td>3,05</td>
+              <td>Aprobo1</td>
+            </tr>
+            <tr>
+              <td rowspan="3">3</td>
+              <td>3</td>
+              <td>2</td>
+              <td>Baja</td>
+              <td>2,65</td>
+              <td>Habilita</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>2</td>
+              <td>Media</td>
+              <td>2,74</td>
+              <td>Habilita</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>2</td>
+              <td>Alta</td>
+              <td>2,86</td>
+              <td>Habilita</td>
+            </tr>
+            <tr>
+              <td rowspan="3">4</td>
+              <td>3</td>
+              <td>3,2</td>
+              <td>Baja</td>
+              <td>3,02</td>
+              <td>Aprobo1</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>3,2</td>
+              <td>Media</td>
+              <td>3,1</td>
+              <td>Aprobo1</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>3,2</td>
+              <td>Alta</td>
+              <td>3,24</td>
+              <td>Aprobo1</td>
+            </tr>
+          </table>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2>Conclusiones</h2>
+          <p> Si elementos como la motivación o participación activa fueran de alguna manera evaluables, esto repercutiría positivamente en el desempeño académico del estudiante que por un motivo u otro se encontrase en una situación de aprobado incierto.</p>
+          <p> Este experimento quería demostrar que si un alumno no muestra interés alguno por la matería, suspenderá irremediablemente, pero no así en el caso opuesto.</p>
+          <p> Algo que el sistema ha sido capaz de inferir objetivamente a través de un proceso sistemático de análisis de información. </p>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2> Bibliografía </h2>
+          <ul>
+            <li>Caso estudiado: <a href="http://www.educacioneningenieria.org/index.php/edi/article/view/83/73">Clasificación de estudiantes por medio de un sistema de lógica difusa</a></li>
+            <li>Material consultado: </li>
+            <ul>
+              <li> Transparencias de teoría </li>
+              <li><a href="http://es.slideshare.net/mentelibre/relaciones-difusas-graficas-difusas-y-aritmtica-difusa>  http://es.slideshare.net/mentelibre/relaciones-difusas-graficas-difusas-y-aritmtica-difusa</a></li>
+<li><a href=" http://palmia.galeon.com/capitulo54.htm> http://palmia.galeon.com/capitulo54.htm</a>
+              </li>
+              <li><a href="http://profesores.elo.utfsm.cl/~tarredondo/info/soft-comp/Introduccion%20a%20la%20Logica%20Difusa.pdf>  http://profesores.elo.utfsm.cl/~tarredondo/info/soft-comp/Introduccion%20a%20la%20Logica%20Difusa.pdf</a></li>
+<li><a href=" http://webpersonal.uma.es/~MORILLAS/DATOSDIFUSOS.pdf> http://webpersonal.uma.es/~MORILLAS/DATOSDIFUSOS.pdf</a>
+              </li>
+              <li><a href="http://www.csee.wvu.edu/classes/cpe521/presentations/DEFUZZ.pdf>  http://www.csee.wvu.edu/classes/cpe521/presentations/DEFUZZ.pdf</a></li>
+<li><a href=" http://www.lcc.uma.es/~ppgg/FSS/FSS5.pdf> http://www.lcc.uma.es/~ppgg/FSS/FSS5.pdf</a>
+              </li>
+              <li><a href="https://es.wikipedia.org/wiki/Distancia_de_Hamming>  https://es.wikipedia.org/wiki/Distancia_de_Hamming</a></li>
+<li><a href=" http://www.monografias.com/trabajos55/metodos-localizacion-instalaciones/metodos-localizacion-instalaciones2.shtml> http://www.monografias.com/trabajos55/metodos-localizacion-instalaciones/metodos-localizacion-instalaciones2.shtml </a>
+              </li>
+            </ul>
+          </ul>
         </section>
       </section>
 
