@@ -73,7 +73,7 @@ Este método consiste en comparar dos elementos distintos para ver en cuantos el
 
 #### 2.5 Decodificación
 
-Como resultado del sistema difuso obtendremos variables lingüísticas que necesitaremos transformar en resultados escalares cuantificables, siendo el método de transformación escogido el centro de gravedad y<sub>0</sub>(B), que considera toda la función de pertenencia en el proceso de transformación, lo que corresponderá a una estrategia de valor medio.
+Como resultado del sistema difuso obtendremos variables lingüísticas que necesitaremos transformar en resultados escalares cuantificables, siendo el método de transformación escogido el centro de gravedad y<sub>0</sub>(B), que considera toda la función de pertenencia en el proceso de transformación para buscar la localización central que este igual de cerca de todos los elementos, lo que corresponderá a una estrategia de valor medio.
 
 El valor de y<sub>0</sub>(B) se refiere a la media de los pesos de todo el supp(B) (los elementos del conjunto difuso con funciones de pertenencia mayor que) como:
 
@@ -92,3 +92,54 @@ Los autores, para este experimento han empleado el método de inferencia difuso 
 3. Determinar las consecuencias (THEN) de cada una de las reglas.
 4. Agregar todas las salidas de las reglas para obtener la salida de todo el sistema.
 5. Decodificar la salida para obtener un valor exacto usando el método del centro de gravedad.
+
+
+#### 3. Metodología del experimento
+
+En esta sección se va a exponer como se llevó a la práctica todo el sistema de lógica difusa planteado en las secciones anteriores. El sistema va a tener tres entradas: notas de exámenes (NP), notas de tareas y calificaciones adicionales (NT) y el componente subjetivo de motivación del estudiante (M). El universo del discurso para NP y NT se estableció en un intervalo 0-5 con las variables lingüisticas asociadas: "Pésimo", "Muy regular", "Regular", "Bueno" y "Excelente". Para la entrada M se establecieron las variables "Baja", "Media" y "Alta". La función de pertenencia definida para cada una de las variables lingüisticas fue de tipo Gaussiana.
+
+- Funciones de pertenencia para notas de exámenes:
+
+![notasExamenes](images/notasExamenes.png)
+
+- Funciones de pertenencia para notas de trabajos:
+
+![notasTrabajos](images/notasTrabajos.png)
+
+- Funciones de pertenencia para la motivación del estudiante:
+
+![motivacionEstudiantes](images/motivacionEstudiantes.png)
+
+Solo se estableció una salida para el nombre de aprobación (A). La zona que comprende la "No aprobación" se dividió en dos variables: "No Aprobo1" y "No Aprobo2", correspondientes a las notas inferiores a 2; la zona de "Habilitación" corresponde a notas entre 2 y 3; finalmente, la zona de "Aprobación" se dividió también en dos variables: "Aprobo1" y "Aprobo2", correspondientes alas notas mayores a 3. Las zonas de "Aprobación" y "No aprobación" fueron divididas para facilitar el fijar la nota final.
+
+- Variable de salida del sistema difuso:
+
+![salidaDifusa](images/salidaDifusa.png)
+
+Como estamos ante un sistema difuso con muchas variables linguisticas de entradas y salidas (18 en total) por combinatoria de estas se producirán también un gran número de reglas (75 reglas); esto hará que sea más dificil establecer las relacionas de casualidad por la que unas determinadas entradas genera unas salidas concretas.
+
+Debido a esto, los autores proponen un método automático de generación de reglas usando la aritmética difusa, relacionado las variables linguisticas de cada entrada con las variables linguisticas de salida. Para hacer esto se se asignó un peso a cada entrada en relación con la importancia de la entrada con respecto a la evaluación total del desempeño del estudiante.
+
+- Pesos de los parámetros de entrada para la creación de reglas
+
+![pesosEntradas](images/pesosEntradas.png)
+
+Para combinar la información difusa con diferentes pesos se usó el promedio ponderado difuso A, que a su vez generará una nueva función de pertenencia. Siendo K<sub>i</sub> la función de pertenencia asociada a cada variables linguistica del parametro de entrada i (NP, NT, M) y W la función de pertenecia según la importancia de cada parametro de entrada i.
+
+![promedioPonderado](images/promedioPonderado.png)
+
+El cálculo del promedio ponderado difuso para relacionar la entrada con la salida se realizó siguiendo los siguientes pasos:
+
+1. Se seleccionaron todas las combinaciones posibles de las variables linguisticas y sus entradas, obteniendo un total de 75 combinaciones como habiamos descrito antes.
+
+2. Se combinaron las variables de entrada junto con las funciones de importancia mediante del promedio ponderado difuso, con esto se consigue obtener un conjunto difuso de salida con unos valores en el intervalo 0-5.
+
+3. Se transforma el conjunto difuso resultante en una de las expresiones linguisticas definidas: No aprobo1, No aprobo2, Habilita, Aprobo1 y Aprobo2. Para realizar esta transformación se realiza la siguiente secuencia:
+
+  31. Se transforman mediante el método del centro de gravedad las variables linguisticas en valores escalares del conjunto difuso resultante y las funcionses de pertenencia de salida.
+
+  32. Se determina la distancia entre el conjunto difuso resultante y las funciones de pertenecia de la salida.
+
+  33. Se asigna la variable linguistica de salda a la regla creada usando la distancia mínima entre el conunto difuso resultante y las funciones de permanencia de la salida.
+
+En el sistema difuso propuesto se utilizó un motor de inferencia tipo Mamdani descrito en la sección anterior.
