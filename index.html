@@ -79,7 +79,7 @@
           <h2> Marco teórico </h2>
           <ul>
             <li>Lógica difusa: mecanismo para interpretar una información en un entorno ambiguo</li>
-            <li>Casos concretos: estudiante deficiente o estudiante excelente</li>
+            <li>Casos concretos: "estudiante deficiente" o "estudiante excelente"</li>
           </ul>
         </section>
         <section>
@@ -89,9 +89,9 @@
             <ul>
               <li> X = {x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>} </li>
             </ul>
-            <li> Subconjunto difuso de A en X conjunto de pares ordenados </li>
+            <li> Subconjunto difuso de A en X, conjunto de pares ordenados </li>
             <ul>
-              <li> A = {µ<sub>A</sub>(x)|x,x∈X}; donde µ<sub>A</sub>(x) </li>
+              <li> A = {x|µ<sub>A</sub>(x), x∈X}</li>
             </ul>
             <li> Función de permanencia de x en A </li>
             <ul>
@@ -111,6 +111,47 @@
           <h2> Conjuntos difusos y funciones de pertenencia </h2>
           <img src="images/graficaPertenencia.png" alt="graficaPertenencia" height="343">
         </section>
+        <section>
+          <h2> Conjuntos difusos y funciones de pertenencia </h2>
+          <p> Por cada conjunto difuso que se cree, se estará construyendo también una función de pertenencia a dicho conjunto en base al criterio oportuno. </p>
+        </section>
+        <section>
+          <h2> Variables lingüisticas </h2>
+          <ul>
+            <li> Modelo matemática muy ineficiente para modelar el conociento </li>
+            <li> Representaciones lingüisticas se adaptan mucho mejor </li>
+          </ul>
+        </section>
+        <section>
+          <h2> Variables lingüisticas </h2>
+          <p> Ejemplo: rango de notas [0-10]; definir "malo", "normal" y "bueno" para clasificar a los alumnos. </p>
+          <ul>
+            <li> malo: { 1|1.0, 2|0.8, 3|0.4, 4|0.1, 5|0.0 } </li>
+            <li> normal: { 2|0.1, 3|0.4, 4|0.8, 5|1.0, 6|0.8, 7|0.4, 8|0.1 } </li>
+            <li> bueno: { 5|0.0, 6|0.1, 7|0.4, 8|0.8, 10|1.0 } </li>
+          </ul>
+        </section>
+        <section>
+          <h2> Operaciones aritméticas difusas </h2>
+          <p>Para unos conjuntos A y B</p>
+          <ul>
+            <li> A = {µ(i) Ii} </li>
+            <li> B = {µ(j) Ij} </li>
+          </ul>
+          <p>Definimos las siguientes operaciones básicas:</p>
+          <ul>
+            <li> Suma: A+B = max{min(µ<sub>A</sub>(i), µ<sub>B</sub>(j) l[i+j])} </li>
+            <li> Producto: A·B = max{min(µ<sub>A</sub>(i), µ<sub>b</sub>(j) l[i·j])} </li>
+            <li> División: A⊕B = max{min(µ<sub>A</sub>(i), µ<sub>b</sub>(j) l[i⊕j])} </li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2> Codificación </h2>
+        </section>
+      </section>
     </div>
 
   </div>
