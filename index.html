@@ -150,6 +150,51 @@
       <section>
         <section>
           <h2> Codificación </h2>
+          <h3> Peso promedio difuso </h3>
+          <p>Mediante las operaciones aritméticas anteriores se calculará el peso de las distintas notas respecto a la nota final.</p>
+          <img src="images/promedio.png" alt="promedio" height="150">
+        </section>
+        <section>
+          <h2> Codificación </h2>
+          <h3> Distancia entre conjuntos </h3>
+          <ul>
+            <li>El peso promedio es un conjunto difuso que necesitaremos transformar al lenguaje natural</li>
+            <li>Calcular la distancia entre el conjunto resultante y el conjunto base de las expresiones del lenguaje natural</li>
+            <li>En este experimento se ha usado el método de Hamming</li>
+          </ul>
+          <img src="images/distancia.png" alt="distancia" height="100">
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2> Decodificación </h2>
+          <ul>
+            <li>Resultado: variables lingüisticas</li>
+            <li>Transformar en resultados escalares cuantificables</li>
+            <li>En este experimento se ha usado el método del centro de gravedad y<sub>0</sub>(B)</li>
+            <li>y<sub>0</sub>(B): media de los pesos de todo el supp(B) (elementos del conjunto con funciones de pertenencia > 0)
+          </ul>
+          <img src="images/centroGravedad.png" alt="centroGravedad" height="100">
+          <ul>
+            <li>card(B): suma de las funciones de pertenencia µ<sub>B</sub>(y)</li>
+            <li>B: salida difusa</li>
+            <li>µ<sub>B</sub>: función de pertenencia</li>
+          </ul>
+        </section>
+      </section>
+
+      <section>
+        <section>
+          <h2> Sistema de inferencia difusa </h2>
+          <p> Al evaluar unas entradas mediante reglas de lógica difusa obtendremos unas salidas concretas. </p>
+          <p> Usado el método de inferencia difuso de Mamdani: </p>
+          <ol>
+            <li> Transformar variables entrada de escalares a lingüísticas</li>
+            <li> Aplicar operadores difusos AND y OR en el antecedente (IF)</li>
+            <li> Determinar consecuencias (THEN) de cada reglas</li>
+            <li>Agregar las salidas de reglas para obtener salida del sistema</li>
+            <li>Decodificar salida para obtener valor exacto usando método centro de gravedad</li>
         </section>
       </section>
     </div>
