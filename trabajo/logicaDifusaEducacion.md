@@ -99,7 +99,7 @@ Debido a esto, los autores proponen un método automático de generación de reg
 
 ![pesosEntradas](images/pesosEntradas.png)
 
-Para combinar la información difusa con diferentes pesos se usó el promedio ponderado difuso A, que a su vez generará una nueva función de pertenencia. Siendo K<sub>i</sub> la función de pertenencia asociada a cada variables lingüística del parámetro de entrada i (NP, NT, M) y W la función de pertenecia según la importancia de cada parámetro de entrada i.
+Para combinar la información difusa con diferentes pesos se usó el promedio ponderado difuso A, que a su vez generará una nueva función de pertenencia. Siendo K<sub>i</sub> la función de pertenencia asociada a cada variables lingüística del parámetro de entrada i (NP, NT, M) y W la función de pertenencia según la importancia de cada parámetro de entrada i.
 
 ![promedioPonderado](images/promedioPonderado.png)
 
@@ -136,7 +136,7 @@ Para comprobar el resultado de sistema se van a proponer situaciones realistas e
 
 A la vista de los resultados podemos ver lo siguiente:
 
-- En los escenarios 1 y 2, los estudiantes que estaban cerca del umbral de aprobar el curso y tenian una mayor motivación fueron los que finalmente terminaron aprobando.
+- En los escenarios 1 y 2, los estudiantes que estaban cerca del umbral de aprobar el curso y tenían una mayor motivación fueron los que finalmente terminaron aprobando.
 
 - En el escenario 3, la motivación no llega a ser determinante para aprobar porque las notas son muy bajas.
 
