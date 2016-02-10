@@ -26,7 +26,7 @@ public class QAP {
         Scanner escaner = null;
 
         try {
-            escaner = new Scanner(new File("src/qap.datos/nug15.dat"));
+            escaner = new Scanner(new File("src/qap.datos/tai256c.dat"));
         } catch (FileNotFoundException e) {
             System.out.print("Archivo de datos no encontrado: ");
             System.out.println(e.getMessage());
