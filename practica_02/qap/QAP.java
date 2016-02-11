@@ -30,7 +30,7 @@ public class QAP {
 
         // Leemos el conjunto de datos para la evaluación "tai256c.dat"
         try {
-            escaner = new Scanner(new File("src/qap.datos/tai256c.dat"));
+            escaner = new Scanner(new File("qap.datos/tai256c.dat"));
         } catch (FileNotFoundException e) {
             System.out.print("Archivo de datos no encontrado: ");
             System.out.println(e.getMessage());
