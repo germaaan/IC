@@ -185,6 +185,9 @@ public class AlgGenLamarck {
     }
 
     private void realizarCruce(int padre_1, int puntoCruce_1, int puntoCruce_2) {
+        // Modificación respecto a la variante baldwiniana: el segundo padre inicialmente
+        // siempre es el mejor individuo de la población, así se incluyen las mejoras
+        // aprendidas al aplicar la técnica de búsqueda local
         int padre_2 = this.mejorPosicion;
         Individuo hijo_1 = new Individuo(poblacion[padre_1]);
         Individuo hijo_2 = new Individuo(poblacion[padre_2]);
@@ -194,7 +197,7 @@ public class AlgGenLamarck {
 
         int aux;
         int valor;
-        boolean exito;
+        boolean copiado;
 
         for (int i = puntoCruce_1; i < puntoCruce_2; i++) {
             aux = hijo_1.getUnidad(i);
@@ -214,9 +217,9 @@ public class AlgGenLamarck {
                 hijo_1.setUnidad(i, this.poblacion[padre_1].getUnidad(i));
             } else {
                 valor = poblacion[padre_1].getUnidad(i);
-                exito = false;
+                copiado = false;
 
-                while (!exito) {
+                while (!copiado) {
                     int j = puntoCruce_1;
 
                     while (valor != hijo_1.getUnidad(j) && j < puntoCruce_2) {
@@ -225,7 +228,7 @@ public class AlgGenLamarck {
 
                     if (!usadosHijo_1.contains(hijo_2.getUnidad(j))) {
                         hijo_1.setUnidad(i, hijo_2.getUnidad(j));
-                        exito = true;
+                        copiado = true;
                     } else {
                         valor = hijo_2.getUnidad(j);
                     }
@@ -236,9 +239,9 @@ public class AlgGenLamarck {
                 hijo_2.setUnidad(i, poblacion[padre_2].getUnidad(i));
             } else {
                 valor = poblacion[padre_2].getUnidad(i);
-                exito = false;
+                copiado = false;
 
-                while (!exito) {
+                while (!copiado) {
                     int j = puntoCruce_1;
 
                     while (valor != hijo_2.getUnidad(j) && j < puntoCruce_2) {
@@ -247,7 +250,7 @@ public class AlgGenLamarck {
 
                     if (!usadosHijo_2.contains(hijo_1.getUnidad(j))) {
                         hijo_2.setUnidad(i, hijo_1.getUnidad(j));
-                        exito = true;
+                        copiado = true;
                     } else {
                         valor = hijo_1.getUnidad(j);
                     }

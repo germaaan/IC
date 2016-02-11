@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class QAP {
 
+    // Definimos parámetros de la ejecución del algoritmo
     public static final int TAM_POBLACION = 100;
     public static int NUM_GENERACIONES = 100;
     public static double PROBABILIDAD_CRUCE = 0.6;
@@ -16,7 +17,9 @@ public class QAP {
     private int[][] distancias;
     private int[][] flujos;
 
-    private AlgGenetico genetico;
+    private AlgGenetico genetico1;
+    private AlgGenBaldwin genetico2;
+    private AlgGenLamarck genetico3;
 
     public static void main(String[] args) {
         QAP problema = new QAP();
@@ -25,6 +28,7 @@ public class QAP {
     public QAP() {
         Scanner escaner = null;
 
+        // Leemos el conjunto de datos para la evaluación "tai256c.dat"
         try {
             escaner = new Scanner(new File("src/qap.datos/tai256c.dat"));
         } catch (FileNotFoundException e) {
@@ -32,11 +36,14 @@ public class QAP {
             System.out.println(e.getMessage());
         }
 
+        // Recuperamos el número de unidades
         numUnidades = escaner.nextInt();
 
+        // Creamos las matrices de distancias y flujos con el número de unidades
         distancias = new int[numUnidades][numUnidades];
         flujos = new int[numUnidades][numUnidades];
 
+        // Recuperamos los valores de las matrices
         for (int n = 0; n < 2; n++) {
 
             for (int i = 0; i < numUnidades; i++) {
@@ -51,13 +58,29 @@ public class QAP {
             }
         }
 
-        genetico = new AlgGenetico(numUnidades, distancias, flujos);
+        // Ejecutamos las 3 variantes del algoritmo
+        genetico1 = new AlgGenetico(numUnidades, distancias, flujos);
+        genetico2 = new AlgGenBaldwin(numUnidades, distancias, flujos);
+        genetico3 = new AlgGenLamarck(numUnidades, distancias, flujos);
+        genetico1.ejecutar();
+        genetico2.ejecutar();
+        genetico3.ejecutar();
 
-        genetico.ejecutar();
+        // Obtenemos el mejor resultado para cada variante
+        Individuo mejorIndividuo1 = genetico1.getMejorIndividuo();
+        Individuo mejorIndividuo2 = genetico2.getMejorIndividuo();
+        Individuo mejorIndividuo3 = genetico3.getMejorIndividuo();
 
-        Individuo mejorIndividuo = genetico.getMejorIndividuo();
+        System.out.println("Algoritmo genético estándar\n\tMejor permutación: "
+                + mejorIndividuo1.toString() + "\n\tCoste asociado: "
+                + mejorIndividuo1.evaluar());
 
-        System.out.println(mejorIndividuo.evaluar());
-        System.out.println(mejorIndividuo.toString());
+        System.out.println("Algoritmo genético baldwiniano\n\tMejor permutación: "
+                + mejorIndividuo2.toString() + "\n\tCoste asociado: "
+                + mejorIndividuo2.evaluar());
+
+        System.out.println("Algoritmo genético lamarckiano\n\tMejor permutación: "
+                + mejorIndividuo3.toString() + "\n\tCoste asociado: "
+                + mejorIndividuo3.evaluar());
     }
 }

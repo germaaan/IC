@@ -67,6 +67,8 @@ public class AlgGenBaldwin {
         double mejorAptitud = 0;
         int mejorPosicion = 0;
 
+        // Modificación respecto al algoritmo original: aplicamos un algoritmo 
+        // greedy basado en 2-opt para el problema QAP
         for (int i = 1; i < QAP.TAM_POBLACION; i++) {
             for (int j = i + 1; j < QAP.TAM_POBLACION - 1; j++) {
                 Individuo aux = this.poblacion[j];
@@ -186,7 +188,7 @@ public class AlgGenBaldwin {
 
         int aux;
         int valor;
-        boolean exito;
+        boolean copiado;
 
         for (int i = puntoCruce_1; i < puntoCruce_2; i++) {
             aux = hijo_1.getUnidad(i);
@@ -206,9 +208,9 @@ public class AlgGenBaldwin {
                 hijo_1.setUnidad(i, this.poblacion[padre_1].getUnidad(i));
             } else {
                 valor = poblacion[padre_1].getUnidad(i);
-                exito = false;
+                copiado = false;
 
-                while (!exito) {
+                while (!copiado) {
                     int j = puntoCruce_1;
 
                     while (valor != hijo_1.getUnidad(j) && j < puntoCruce_2) {
@@ -217,7 +219,7 @@ public class AlgGenBaldwin {
 
                     if (!usadosHijo_1.contains(hijo_2.getUnidad(j))) {
                         hijo_1.setUnidad(i, hijo_2.getUnidad(j));
-                        exito = true;
+                        copiado = true;
                     } else {
                         valor = hijo_2.getUnidad(j);
                     }
@@ -228,9 +230,9 @@ public class AlgGenBaldwin {
                 hijo_2.setUnidad(i, poblacion[padre_2].getUnidad(i));
             } else {
                 valor = poblacion[padre_2].getUnidad(i);
-                exito = false;
+                copiado = false;
 
-                while (!exito) {
+                while (!copiado) {
                     int j = puntoCruce_1;
 
                     while (valor != hijo_2.getUnidad(j) && j < puntoCruce_2) {
@@ -239,7 +241,7 @@ public class AlgGenBaldwin {
 
                     if (!usadosHijo_2.contains(hijo_1.getUnidad(j))) {
                         hijo_2.setUnidad(i, hijo_1.getUnidad(j));
-                        exito = true;
+                        copiado = true;
                     } else {
                         valor = hijo_1.getUnidad(j);
                     }
