@@ -62,24 +62,39 @@ public class QAP {
         genetico1 = new AlgGenetico(numUnidades, distancias, flujos);
         genetico2 = new AlgGenBaldwin(numUnidades, distancias, flujos);
         genetico3 = new AlgGenLamarck(numUnidades, distancias, flujos);
+
+        long ini_1 = System.currentTimeMillis();
         genetico1.ejecutar();
+        long fin_1 = System.currentTimeMillis();
+        long ini_2 = System.currentTimeMillis();
         genetico2.ejecutar();
+        long fin_2 = System.currentTimeMillis();
+        long ini_3 = System.currentTimeMillis();
         genetico3.ejecutar();
+        long fin_3 = System.currentTimeMillis();
+
+        // Calculamos tiempos de ejecución
+        long eje_1 = fin_1 - ini_1;
+        long eje_2 = fin_2 - ini_2;
+        long eje_3 = fin_3 - ini_3;
 
         // Obtenemos el mejor resultado para cada variante
         Individuo mejorIndividuo1 = genetico1.getMejorIndividuo();
         Individuo mejorIndividuo2 = genetico2.getMejorIndividuo();
         Individuo mejorIndividuo3 = genetico3.getMejorIndividuo();
 
-        System.out.println("Algoritmo genético estándar\n\tMejor permutación: "
+        System.out.println("\nAlgoritmo genético estándar\n\tTiempo:"
+                + eje_1/1000 + "\n\tMejor permutación: "
                 + mejorIndividuo1.toString() + "\n\tCoste asociado: "
                 + mejorIndividuo1.evaluar());
 
-        System.out.println("Algoritmo genético baldwiniano\n\tMejor permutación: "
+        System.out.println("Algoritmo genético baldwiniano\n\tTiempo:"
+                + eje_2/1000 + "\n\tMejor permutación: "
                 + mejorIndividuo2.toString() + "\n\tCoste asociado: "
                 + mejorIndividuo2.evaluar());
 
-        System.out.println("Algoritmo genético lamarckiano\n\tMejor permutación: "
+        System.out.println("Algoritmo genético lamarckiano\n\tTiempo:"
+                + eje_3/1000 + "\n\tMejor permutación: "
                 + mejorIndividuo3.toString() + "\n\tCoste asociado: "
                 + mejorIndividuo3.evaluar());
     }

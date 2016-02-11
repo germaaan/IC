@@ -31,12 +31,13 @@ public class AlgGenBaldwin {
     }
 
     public void ejecutar() {
+        System.out.println("\nAlgoritmo genético variante baldwiniana");
         this.inicializacion();
         this.evaluacion();
 
         int tamElite = (int) (QAP.TAM_POBLACION * QAP.ELITISMO);
 
-        for (int i = 0; i < QAP.NUM_GENERACIONES; i++) {
+        for (int i = 1; i <= QAP.NUM_GENERACIONES; i++) {
             this.funcionElitista(tamElite);
             this.seleccion();
             this.cruce();
@@ -47,6 +48,7 @@ public class AlgGenBaldwin {
             }
 
             this.evaluacion();
+            System.out.println("Generación " + i + ": " + this.mejorIndividuo.getAptitud());
         }
     }
 

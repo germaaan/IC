@@ -22,7 +22,8 @@ public class AlgGenetico {
 
     /**
      * Constructor del algoritmo genético con los parámetros iniciales
-     * @param numUnidades Número de unidades 
+     *
+     * @param numUnidades Número de unidades
      * @param distancias Matriz de distancias
      * @param flujos Matriz de flujos
      */
@@ -40,12 +41,13 @@ public class AlgGenetico {
      * Ejecuta el algoritmo
      */
     public void ejecutar() {
+        System.out.println("\nAlgoritmo genético estándar");
         this.inicializacion();
         this.evaluacion();
 
         int tamElite = (int) (QAP.TAM_POBLACION * QAP.ELITISMO);
 
-        for (int i = 0; i < QAP.NUM_GENERACIONES; i++) {
+        for (int i = 1; i <= QAP.NUM_GENERACIONES; i++) {
             this.funcionElitista(tamElite);
             this.seleccion();
             this.cruce();
@@ -56,14 +58,16 @@ public class AlgGenetico {
             }
 
             this.evaluacion();
+            System.out.println("Generación " + i + ": " + this.mejorIndividuo.getAptitud());
         }
     }
-    
+
     /**
      * Devuelve el mejor individuo en función de su coste asociado
+     *
      * @return Mejor individuo
      */
-    public Individuo getMejorIndividuo(){
+    public Individuo getMejorIndividuo() {
         return this.mejorIndividuo;
     }
 
@@ -100,8 +104,10 @@ public class AlgGenetico {
         }
     }
 
-    /** Selecciona la élite de los individuos de la población en función del tamaño de
-     * élite especificado
+    /**
+     * Selecciona la élite de los individuos de la población en función del
+     * tamaño de élite especificado
+     *
      * @param tamElite Tamaño de la élite
      */
     private void funcionElitista(int tamElite) {
@@ -162,8 +168,8 @@ public class AlgGenetico {
     }
 
     /**
-     * Cruce de individuos de la población mediante cruce por emparejamiento parcial
-     * de dos padres mediante dos puntos de corte
+     * Cruce de individuos de la población mediante cruce por emparejamiento
+     * parcial de dos padres mediante dos puntos de corte
      */
     private void cruce() {
         // Individuos que se van a reproducir
@@ -212,6 +218,7 @@ public class AlgGenetico {
 
     /**
      * Efectua cruce
+     *
      * @param padre_1 Primer padre
      * @param padre_2 Segundo padre
      * @param puntoCruce_1 Primer punto de cruce

@@ -33,6 +33,7 @@ public class AlgGenLamarck {
     }
 
     public void ejecutar() {
+        System.out.println("\nAlgoritmo genético variante lamarckiana");
         this.inicializacion();
         this.evaluacion();
 
@@ -49,6 +50,7 @@ public class AlgGenLamarck {
             }
 
             this.evaluacion();
+            System.out.println("Generación " + i + ": " + this.mejorIndividuo.getAptitud());
         }
     }
 
