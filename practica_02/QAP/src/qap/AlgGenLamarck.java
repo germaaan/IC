@@ -15,11 +15,9 @@ public class AlgGenLamarck {
     private Individuo[] elite;
 
     private Individuo mejorIndividuo;
+    private int mejorPosicion;
 
     private int[] indices;
-
-    private int totalCruces;
-    private int totalMutaciones;
 
     private final Random aleatorio;
 
@@ -30,13 +28,11 @@ public class AlgGenLamarck {
         this.flujos = new int[this.numUnidades][this.numUnidades];
         System.arraycopy(flujos, 0, this.flujos, 0, flujos.length);
 
+        this.mejorPosicion = 0;
         this.aleatorio = new Random();
     }
 
     public void ejecutar() {
-        this.totalCruces = 0;
-        this.totalMutaciones = 0;
-
         this.inicializacion();
         this.evaluacion();
 
@@ -73,8 +69,8 @@ public class AlgGenLamarck {
         double mejorAptitud = 0;
         int mejorPosicion = 0;
 
-        for (int i = 1; i < QAP.TAM_POBLACION; i++) {
-            for (int j = i + 1; j < QAP.TAM_POBLACION - 1; j++) {
+        for (int i = 0; i < QAP.TAM_POBLACION; i++) {
+            for (int j = i + 1; j < QAP.TAM_POBLACION; j++) {
                 Individuo aux = this.poblacion[j];
                 this.poblacion[j] = this.poblacion[i];
                 this.poblacion[i] = aux;
@@ -92,6 +88,7 @@ public class AlgGenLamarck {
 
         if (this.mejorIndividuo == null || mejorAptitud > this.mejorIndividuo.getAptitud()) {
             this.mejorIndividuo = new Individuo(this.poblacion[mejorPosicion]);
+            this.mejorPosicion = mejorPosicion;
         }
     }
 
@@ -182,14 +179,13 @@ public class AlgGenLamarck {
             punto_2 = aux;
         }
 
-        this.totalCruces += indice / 2;
-
         for (int i = 0; i < indice; i += 2) {
-            this.realizarCruce(cruce[i], cruce[i + 1], punto_1, punto_2);
+            this.realizarCruce(cruce[i], punto_1, punto_2);
         }
     }
 
-    private void realizarCruce(int padre_1, int padre_2, int puntoCruce_1, int puntoCruce_2) {
+    private void realizarCruce(int padre_1, int puntoCruce_1, int puntoCruce_2) {
+        int padre_2 = this.mejorPosicion;
         Individuo hijo_1 = new Individuo(poblacion[padre_1]);
         Individuo hijo_2 = new Individuo(poblacion[padre_2]);
 
@@ -276,8 +272,6 @@ public class AlgGenLamarck {
             probabilidad = Math.random();
 
             if (probabilidad < QAP.PROBABILIDAD_MUTACION) {
-                this.totalMutaciones++;
-
                 int posicion_1 = 0;
                 int posicion_2 = 0;
 

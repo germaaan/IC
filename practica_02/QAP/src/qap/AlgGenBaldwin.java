@@ -18,9 +18,6 @@ public class AlgGenBaldwin {
 
     private int[] indices;
 
-    private int totalCruces;
-    private int totalMutaciones;
-
     private final Random aleatorio;
 
     public AlgGenBaldwin(int numUnidades, int[][] distancias, int[][] flujos) {
@@ -34,9 +31,6 @@ public class AlgGenBaldwin {
     }
 
     public void ejecutar() {
-        this.totalCruces = 0;
-        this.totalMutaciones = 0;
-
         this.inicializacion();
         this.evaluacion();
 
@@ -178,8 +172,6 @@ public class AlgGenBaldwin {
             punto_2 = aux;
         }
 
-        this.totalCruces += indice / 2;
-
         for (int i = 0; i < indice; i += 2) {
             this.realizarCruce(cruce[i], cruce[i + 1], punto_1, punto_2);
         }
@@ -272,8 +264,6 @@ public class AlgGenBaldwin {
             probabilidad = Math.random();
 
             if (probabilidad < QAP.PROBABILIDAD_MUTACION) {
-                this.totalMutaciones++;
-
                 int posicion_1 = 0;
                 int posicion_2 = 0;
 
