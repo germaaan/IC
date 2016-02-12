@@ -2,14 +2,20 @@ package qap;
 
 import java.util.Random;
 
-public class Individuo implements Comparable<Individuo> {
+public class Individuo {
 
-    private final int numUnidades;
-    private final int[][] distancias;
-    private final int[][] flujos;
+    private int numUnidades;
+    private int[][] distancias;
+    private int[][] flujos;
     private int[] unidades;
     private double aptitud;
 
+    /**
+     * Constructor de los invididuos que va a contener la población (las permutaciones)
+     * @param numUnidades Número de unidades
+     * @param distancias Matriz de distancias
+     * @param flujos Matriz de flujos
+     */
     public Individuo(int numUnidades, int[][] distancias, int[][] flujos) {
         this.numUnidades = numUnidades;
 
@@ -23,6 +29,8 @@ public class Individuo implements Comparable<Individuo> {
         for (int i = 0; i < this.numUnidades; i++) {
             this.unidades[i] = i;
         }
+        
+        // Las unidades son inializadas de forma aleatoria
         Random aleatorio = new Random();
         for (int i = 0; i < this.numUnidades; i++) {
             int posicion = aleatorio.nextInt(this.numUnidades);
@@ -34,6 +42,10 @@ public class Individuo implements Comparable<Individuo> {
         this.aptitud = 0;
     }
 
+    /**
+     * Constructor de copia
+     * @param individuo Individuo que va a copiarse
+     */
     public Individuo(Individuo individuo) {
         this.numUnidades = individuo.numUnidades;
         this.aptitud = individuo.aptitud;
@@ -60,14 +72,18 @@ public class Individuo implements Comparable<Individuo> {
         return this.unidades[i];
     }
 
-    public void setAptitud(double aptitud) {
-        this.aptitud = aptitud;
+    public void setAptitud() {
+        this.aptitud = this.evaluar();
     }
 
     public void setUnidad(int i, int valor) {
         this.unidades[i] = valor;
     }
 
+    /**
+     * Función de fitness del individuo
+     * @return Coste de la permutación
+     */
     public int evaluar() {
         int valor = 0;
 
@@ -81,11 +97,6 @@ public class Individuo implements Comparable<Individuo> {
     }
 
     @Override
-    public int compareTo(Individuo o) {
-        return Boolean.compare(this.aptitud < o.aptitud, false);
-    }
-
-    @Override
     public String toString() {
         String cadena = "[";
 
@@ -96,3 +107,4 @@ public class Individuo implements Comparable<Individuo> {
         return cadena.substring(0, cadena.length() - 1) + "]";
     }
 }
+

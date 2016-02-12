@@ -7,17 +7,17 @@ import java.util.Scanner;
 public class QAP {
 
     // Definimos parámetros de la ejecución del algoritmo
-    public static final int TAM_POBLACION = 100;
-    public static int NUM_GENERACIONES = 100;
-    public static double PROBABILIDAD_CRUCE = 0.6;
-    public static double PROBABILIDAD_MUTACION = 0.05;
-    public static double ELITISMO = 0.1;
+    public static final int TAM_POBLACION = 500;
+    public static final int NUM_GENERACIONES = 100;
+    public static final int TAM_TORNEO = 5;
+    public static final double PROBABILIDAD_CRUCE = 0.6;
+    public static final double PROBABILIDAD_MUTACION = 0.2;
 
-    private final int numUnidades;
+    private int numUnidades;
     private int[][] distancias;
     private int[][] flujos;
 
-    private AlgGenetico genetico1;
+    private AlgoritmoGenetico genetico1;
     private AlgGenBaldwin genetico2;
     private AlgGenLamarck genetico3;
 
@@ -59,7 +59,7 @@ public class QAP {
         }
 
         // Ejecutamos las 3 variantes del algoritmo
-        genetico1 = new AlgGenetico(numUnidades, distancias, flujos);
+        genetico1 = new AlgoritmoGenetico(numUnidades, distancias, flujos);
         genetico2 = new AlgGenBaldwin(numUnidades, distancias, flujos);
         genetico3 = new AlgGenLamarck(numUnidades, distancias, flujos);
 
@@ -83,19 +83,27 @@ public class QAP {
         Individuo mejorIndividuo2 = genetico2.getMejorIndividuo();
         Individuo mejorIndividuo3 = genetico3.getMejorIndividuo();
 
-        System.out.println("\nAlgoritmo genético estándar\n\tTiempo:"
-                + eje_1/1000 + "\n\tMejor permutación: "
+        System.out.println("\nParámetros:\n\tTamaño de población: "
+                + QAP.TAM_POBLACION + "\n\tNúmero de generaciones: "
+                + QAP.NUM_GENERACIONES + "\n\tTamaño de torneo: "
+                + QAP.TAM_TORNEO + "\n\tProbabilidad de cruce: "
+                + (QAP.PROBABILIDAD_CRUCE * 100) + "%\n\tProbabilidad de mutación: "
+                + (QAP.PROBABILIDAD_MUTACION * 100) + "%");
+
+        System.out.println("\nAlgoritmo genético estándar\n\tTiempo: "
+                + eje_1 / 1000 + "s\n\tMejor permutación: "
                 + mejorIndividuo1.toString() + "\n\tCoste asociado: "
                 + mejorIndividuo1.evaluar());
 
-        System.out.println("Algoritmo genético baldwiniano\n\tTiempo:"
-                + eje_2/1000 + "\n\tMejor permutación: "
+        System.out.println("Algoritmo genético baldwiniano\n\tTiempo: "
+                + eje_2 / 1000 + "s\n\tMejor permutación: "
                 + mejorIndividuo2.toString() + "\n\tCoste asociado: "
                 + mejorIndividuo2.evaluar());
 
-        System.out.println("Algoritmo genético lamarckiano\n\tTiempo:"
-                + eje_3/1000 + "\n\tMejor permutación: "
+        System.out.println("Algoritmo genético lamarckiano\n\tTiempo: "
+                + eje_3 / 1000 + "s\n\tMejor permutación: "
                 + mejorIndividuo3.toString() + "\n\tCoste asociado: "
                 + mejorIndividuo3.evaluar());
     }
 }
+
